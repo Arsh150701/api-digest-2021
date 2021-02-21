@@ -1,11 +1,11 @@
 package com.example.rickrolled;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,40 +18,36 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
+    RecyclerView charView;
+    JSONObject jsonObject;
+    JSONArray jsonArray;
     private static final String TAG = "MainActivity";
-    private static final String URL = "https://rickandmortyapi.com/api/character";
-    private TextView textView;
+    private static final String CHAR_URL = "https://rickandmortyapi.com/api/character";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView=findViewById(R.id.tvresult);
-
-        StringRequest stringRequest=new StringRequest(Request.Method.GET,
-                URL,
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, CHAR_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jsonObject=new JSONObject(response);
-                            JSONArray jsonArray=jsonObject.getJSONArray("results");
-
-                            for(int i=0;i<jsonArray.length();++i){
-                                JSONObject o=jsonArray.getJSONObject(i);
-                                String s=o.getString("name")+"\n"+
-                                        o.getString("status")+"\n\n";
-                                textView.append(s);
-                            }
+                            jsonObject = new JSONObject(response);
+                            jsonArray = jsonObject.getJSONArray("results");
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Log.d(TAG, "onResponse: "+e.getMessage());
+                        }
+                        finally {
+                            charView = findViewById(R.id.charView);
+                            RVAdapter rva = new RVAdapter(getApplicationContext(), jsonArray);
+                            charView.setAdapter(rva);
+                            charView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                         }
                     }
                 },
@@ -64,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
+//        charView = findViewById(R.id.charView);
+//        RVAdapter rva = new RVAdapter(this, jsonArray);
+//        charView.setAdapter(rva);
+//        charView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 }
