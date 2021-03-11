@@ -22,6 +22,11 @@ We intend to add a filter feature which will allow user to search for a characte
 
 Add the location and episode views.
 
+
+### Screenshots
+<img width=370px height=280px src="https://github.com/Arsh150701/api-digest-2021/blob/main/team%2326%20-%205/Rickrolled%20homepage.jpeg"/>
+
+
 ### Installing
 
 A step by step series of instructions that tell you how to get a development env running.
