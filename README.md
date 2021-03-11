@@ -24,7 +24,10 @@ Add the location and episode views.
 
 
 ### Screenshots
-<img width=370px height=280px src="https://github.com/Arsh150701/api-digest-2021/blob/main/team%2326%20-%205/Rickrolled%20homepage.jpeg"/>
+<img width=360px height=640px src="https://github.com/Arsh150701/api-digest-2021/blob/main/team%2326%20-%205/Rickrolled%20homepage.jpeg"/>
+<img width=360px height=640px src="https://github.com/Arsh150701/api-digest-2021/blob/main/team%2326%20-%205/Rickrolled%20tree.jpeg"/>
+<img width=360px height=640px src="https://github.com/Arsh150701/api-digest-2021/blob/main/team%2326%20-%205/Rickrolled%20tree%20info.jpeg"/>
+<img width=360px height=640px src="https://github.com/Arsh150701/api-digest-2021/blob/main/team%2326%20-%205/Rickrolled.jpeg"/>
 
 
 ### Installing
